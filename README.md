@@ -14,13 +14,13 @@ devLog = logLogger('DEVLOG');
 devLog({ name: 'an object' });
 ```
 
-or this way...
++ or this way...
 
 ```
 logr({level: 'log'})('stuff')({name: 'bob the lizard'});
 ```
 
-or chain it forever ...
++ or chain it forever ...
 
 ```
 logr({level: 'log'})('stuff')({name: 'bob the lizard'})
@@ -28,7 +28,7 @@ logr({level: 'log'})('stuff')({name: 'bob the lizard'})
     ({level: 'warn'})('I WARNED YOU')({data: 'something here'});
 ```
 
-or if you don't want to use console.log|debug|error|info|warn, 
++ or if you don't want to use console.log|debug|error|info|warn, 
 specify your own function (xhr, whatever ...)
 
 ```
