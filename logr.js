@@ -28,9 +28,7 @@
           var args = [message].concat([].slice.call(arguments, 0));
 
           if (typeof transport === 'function') {
-
             transport.apply(null, args);
-          
           } else if (hasConsole(exports, level)) {
             exports.console[level].apply(exports.console, args);
           }
@@ -39,5 +37,4 @@
       };
     };
   }
-
 }(this));
