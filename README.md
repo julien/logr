@@ -1,7 +1,7 @@
 logr
 ====
 
-A super simple log help for JavaScript
+A super simple log helper for JavaScript
 
 usage
 ====
