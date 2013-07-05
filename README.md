@@ -17,20 +17,22 @@ devLog({ name: 'an object' });
 or this way...
 
 ```
-logLogger({level: 'log'})('stuff')({name: 'bob the lizard'});
+logr({level: 'log'})('stuff')({name: 'bob the lizard'});
 ```
 
 or chain it forever ...
 
 ```
-logLogger({level: 'log'})('stuff')({name: 'bob the lizard'})({level: 'error'})('SHIT HAPPENS')({error: 'he threw up'});
+logr({level: 'log'})('stuff')({name: 'bob the lizard'})
+    ({level: 'error'})('SHIT HAPPENS')({error: 'he threw up'})
+    ({level: 'warn'})('I WARNED YOU')({data: 'something here'});
 ```
 
 or if you don't want to use console.log|debug|error|info|warn, 
 specify your own function (xhr, whatever ...)
 
 ```
-loggerLogger({level: 'debug', transport: function (message, data) {
+logr({level: 'debug', transport: function (message, data) {
   // xhr.send ...
 }})('MOAR')({message: 'winter is coming'});
 ```
