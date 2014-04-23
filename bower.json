@@ -1,0 +1,28 @@
+{
+  "name": "logr",
+  "main": "logr.js",
+  "version": "0.0.2",
+  "homepage": "https://github.com/julien/logr",
+  "authors": [
+    "Julien Castelain <jcastelain@gmail.com>"
+  ],
+  "description": "A super simple log helper for JavaScript",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "logger",
+    "log",
+    "console.log"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
