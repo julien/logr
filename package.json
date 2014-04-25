@@ -1,6 +1,6 @@
 {
   "name": "logr",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A super simple log helper for JavaScript",
   "main": "logr.js",
   "scripts": {
