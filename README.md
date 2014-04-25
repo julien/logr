@@ -8,14 +8,17 @@ A super simple log helper for JavaScript
 ```
 logr.execute('log', 'A log message')
   .execute('info', 'An info message')
-  .execute('debug', 'A debug message'); // returns logr object
+  .execute('debug', 'A debug message'); 
+
+// Returns logr object so can be chained
 ```
 
 ```
 logr.execute('log', 'A log message', {hello: 'world'}, function () {
   console.log('Received: ', arguments);    
 });
-// Received: ["A log message", Object] 
+
+// Received: ["A log message", Object, function]
 ```
 
 ```
@@ -36,8 +39,9 @@ logr.execute('time', 'time01');
 setTimeout(function () {
   logr.execute('timeEnd', 'time01');
 }, 4000);
-// example output 
-// time01: 4001.269ms
+// Example output 
+// time time01
+// timeEnd time01
 
 ```
 

@@ -15,27 +15,21 @@
 
   var scope = this
     , slice = Array.prototype.slice
-    , levels = ['log', 'debug', 'error', 'info', 'warn'];
+    , levels = ['log', 'debug', 'error', 'info', 'warn', 'time', 'timeEnd'];
 
   function canLog(obj, fn) {
     return 'console' in obj && typeof obj.console[fn] === 'function';
   }
 
-  logr.execute = function (level) {
-    var args = slice.call(arguments, 1)
-      , msg
-      , cb;
+  logr.execute = function () {
+    var args = slice.call(arguments, 0)
+      , level = (levels.indexOf(args[0]) !== -1) ? args[0] : levels[0]
+      , cb = args[args.length - 1];
 
-    if (args.length === 1) {
-      msg = typeof args[0] === 'string' ? args[0] : ''; 
-    } else if (args.length > 1) {
-      msg = args[0];
-      cb = args[args.length - 1];
-    }
-    
     if (typeof cb === 'function') {
-      cb.apply(this, args.pop());
+      cb.apply(null, args);
     } else if (canLog(scope, level)) {
+      args = [args.pop()];      
       scope.console[level].apply(scope.console, args);
     }
   
