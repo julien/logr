@@ -13,31 +13,34 @@
   }
 }(this, function(root, logr) {
 
-  var slice = Array.prototype.slice
+  var scope = this
+    , slice = Array.prototype.slice
     , levels = ['log', 'debug', 'error', 'info', 'warn'];
 
   function canLog(obj, fn) {
     return 'console' in obj && typeof obj.console[fn] === 'function';
   }
 
-  logr.create = function (level, category, transport) {
-    level = levels[level] ? level : levels[0];
-    category = typeof category === 'string' ? category : '';
+  logr.execute = function (level) {
+    var args = slice.call(arguments, 1)
+      , msg
+      , cb;
 
-    obj = {
-      log: function () {
-        var prev = category ? [category] : []
-          , args = prev.concat(slice.call(arguments, 0));
-
-        if (typeof transport === 'function') {
-          transport.apply(this, args);
-        } else if (canLog(root, level)){
-          root.console[level].apply(root.console[level], args);
-        }
-        return obj;
-      }
-    };
-    return obj;
+    if (args.length === 1) {
+      msg = typeof args[0] === 'string' ? args[0] : ''; 
+    } else if (args.length > 1) {
+      msg = args[0];
+      cb = args[1];
+    }
+    
+    if (typeof cb === 'function') {
+      cb.call(this, level, msg);
+    } else if (canLog(scope, level)) {
+      scope.console[level].call(scope.console, msg);
+    }
+  
+    return logr;
   };
+
   return logr;
 }));

@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head></head>
+  <body>
+    <script src="logr.js"></script>
+    <script>
+      window.addEventListener('load', function () {
+
+        function assert(actual, expected, message) {
+          message = message || 'expected: ' + expected + ' got: ' + actual;
+          if (actual !== expected) {
+            throw new Error(message);
+          }
+          console.log('passed');
+        }
+
+        assert(typeof logr, 'object', 'logr should be an object');
+        assert(typeof logr.execute, 'function', 'logr.execute should be defined as a function');
+        assert(logr.execute(), logr, 'should return logr');
+      });
+    </script>
+  </body>
+</html>
