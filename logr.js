@@ -30,13 +30,13 @@
       msg = typeof args[0] === 'string' ? args[0] : ''; 
     } else if (args.length > 1) {
       msg = args[0];
-      cb = args[1];
+      cb = args[args.length - 1];
     }
     
     if (typeof cb === 'function') {
-      cb.call(this, level, msg);
+      cb.apply(this, args.pop());
     } else if (canLog(scope, level)) {
-      scope.console[level].call(scope.console, msg);
+      scope.console[level].apply(scope.console, args);
     }
   
     return logr;
